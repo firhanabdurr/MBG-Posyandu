@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasbor Presentasi MBG untuk Ibu Kader Posyandu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex h-screen overflow-hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-[#0A2463] text-white p-6 flex-shrink-0 overflow-y-auto">
+        <h1 class="text-2xl font-bold mb-8 text-[#D9A443]">Program MBG untuk B3</h1>
+        <nav>
+            <ul>
+                <li><a href="#beranda" class="sidebar-item active block py-3 px-4 rounded-lg mb-2">🏠 Beranda</a></li>
+                <li><a href="#mengenal-mbg" class="sidebar-item block py-3 px-4 rounded-lg mb-2">💡 Mengenal MBG</a></li>
+                <li><a href="#peran-kader" class="sidebar-item block py-3 px-4 rounded-lg mb-2">⭐ Peran Ibu Kader</a></li>
+                <li><a href="#alur-distribusi" class="sidebar-item block py-3 px-4 rounded-lg mb-2">🚚 Alur Distribusi</a></li>
+                <li><a href="#sop-kader" class="sidebar-item block py-3 px-4 rounded-lg mb-2">🧼 SOP untuk Kader</a></li>
+                <li><a href="#poin-penting" class="sidebar-item block py-3 px-4 rounded-lg mb-2">❗ Poin Penting</a></li>
+            </ul>
+        </nav>
+        <div class="mt-auto pt-8">
+            <p class="text-xs text-gray-400">Dibuat oleh SPPG untuk Ibu Kader Posyandu Hebat.</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 p-8 overflow-y-auto">
+        <!-- Beranda Section -->
+        <section id="beranda" class="content-section active">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-4">Selamat Datang, Ibu-ibu Kader Posyandu Hebat!</h2>
+            <p class="mb-8 text-lg text-gray-600">Terima kasih banyak atas waktu, semangat, dan kehadiran Ibu-ibu hari ini. Peran Anda sangatlah penting bagi kesehatan masyarakat, terutama dalam menyukseskan Program Makan Bergizi Gratis ini. Mari kita sinergikan langkah demi gizi anak bangsa!</p>
+            
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                 <h3 class="text-2xl font-bold text-[#0A2463] mb-4">Visi Program</h3>
+                 <p class="italic text-center text-xl text-gray-700 mb-2">"Menciptakan generasi Indonesia yang sehat, cerdas, dan kuat, menuju Indonesia Emas 2045."</p>
+                 <p class="text-gray-600 text-center">Setiap paket MBG yang Ibu-ibu salurkan adalah langkah nyata untuk membangun generasi yang lebih sehat dan masa depan Indonesia yang lebih cerah.</p>
+            </div>
+             <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold text-[#0A2463] mb-4">Penutup & Terima Kasih</h3>
+                <p class="text-gray-700">Ibu-ibu Kader Posyandu adalah Mitra Strategis kami! Mari kita terus bekerja sama dengan semangat dan dedikasi. Terima kasih banyak atas kerja keras dan pengabdian Ibu-ibu sekalian!</p>
+                <p class="mt-4 text-center font-bold text-xl text-[#D9A443]">Bersama, Kita Wujudkan Gizi Terbaik untuk Anak Bangsa!</p>
+            </div>
+        </section>
+
+        <!-- Mengenal MBG Section -->
+        <section id="mengenal-mbg" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Apa Itu Program Makan Bergizi Gratis (MBG)?</h2>
+            <p class="mb-8 text-gray-600">Program MBG adalah inisiatif pemerintah melalui Badan Gizi Nasional (BGN) untuk meningkatkan status gizi masyarakat. Mari kita pahami siapa saja sasarannya dan bagaimana bentuk bantuannya.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Sasaran Spesifik Program</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Anak-anak sekolah</li>
+                        <li>Ibu Hamil (semua trimester)</li>
+                        <li>Ibu Menyusui (anak usia 0-24 bulan)</li>
+                        <li>Anak Balita (usia 1-5 tahun, yang belum/tidak sekolah formal)</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-600">Penerima manfaat adalah yang berdomisili di sekitar SPPG kita (radius maksimal 6 km / 20 menit waktu tempuh).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Jenis Menu & Waktu Pemberian</h3>
+                     <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li><b>Paket Makanan Lengkap:</b> Nasi, lauk pauk, sayur, buah, dan susu/sumber protein tambahan.</li>
+                        <li><b>Dirancang Ahli Gizi:</b> Untuk memenuhi kebutuhan gizi seimbang.</li>
+                        <li><b>Higienis:</b> Disajikan dalam foodtray yang bersih.</li>
+                        <li><b>Waktu:</b> Diberikan sebagai makan siang setiap hari sekolah (Senin - Jumat).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Peran Kader Section -->
+        <section id="peran-kader" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-2">Ibu Kader adalah UJUNG TOMBAK Kami!</h2>
+            <p class="mb-8 text-lg text-gray-600">Tanpa Ibu-ibu, Program MBG tidak akan berjalan optimal. Anda adalah penghubung vital antara kami dan masyarakat.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl mb-3">👀</p>
+                    <h3 class="text-xl font-bold text-[#0A2463] mb-2">Mata dan Telinga Kami</h3>
+                    <p class="text-gray-600">Ibu-ibu paling tahu kondisi keluarga dan anak-anak di wilayah masing-masing.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl mb-3">🤝</p>
+                    <h3 class="text-xl font-bold text-[#0A2463] mb-2">Tangan Kami</h3>
+                    <p class="text-gray-600">Ibu-ibu yang akan langsung menyalurkan kebahagiaan (paket MBG) kepada penerima manfaat.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <p class="text-5xl mb-3">🌉</p>
+                    <h3 class="text-xl font-bold text-[#0A2463] mb-2">Jembatan Kami</h3>
+                    <p class="text-gray-600">Ibu-ibu menghubungkan kami (SPPG) dengan masyarakat secara langsung.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alur Distribusi Section -->
+        <section id="alur-distribusi" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Alur Distribusi Paket MBG (Dari Dapur ke Penerima)</h2>
+            <p class="mb-8 text-gray-600">Ibu-ibu Kader adalah bagian tak terpisahkan dari alur distribusi ini. Mari kita pahami setiap langkahnya. Klik setiap kotak untuk melihat detailnya!</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="dapur">
+                    <p class="text-4xl mb-2">🍳</p>
+                    <h3 class="font-bold text-[#0A2463]">1. Persiapan di Dapur SPPG</h3>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="pengiriman">
+                    <p class="text-4xl mb-2">🚚</p>
+                    <h3 class="font-bold text-[#0A2463]">2. Pengiriman ke Titik Kumpul</h3>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="penyaluran_kader">
+                    <p class="text-4xl mb-2">🤲</p>
+                    <h3 class="font-bold text-[#0A2463]">3. Penyaluran oleh Ibu Kader</h3>
+                </div>
+                 <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="makan_bersama">
+                    <p class="text-4xl mb-2">🍽️</p>
+                    <h3 class="font-bold text-[#0A2463]">4. Makan Bersama (Opsional)</h3>
+                </div>
+            </div>
+
+            <div id="flow-detail-content" class="mt-8 bg-white p-6 rounded-xl shadow-md">
+                <!-- Detail content will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- SOP Kader Section -->
+        <section id="sop-kader" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Standar Operasional (SOP) Kunci untuk Ibu Kader</h2>
+            <p class="mb-8 text-gray-600">Untuk menjaga kualitas dan keamanan, mari kita patuhi standar berikut saat bertugas.</p>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-gray-100 font-bold text-lg">
+                        1. Saat Menerima Paket dari SPPG
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Cek Jumlah:</b> Pastikan jumlah paket sesuai dengan daftar Penerima Manfaat.</li>
+                            <li><b>Cek Kondisi:</b> Pastikan foodtray tertutup rapat, tidak rusak, dan makanan tidak tumpah.</li>
+                            <li><b>Cek Kebersihan:</b> Pastikan foodtray dan kemasan bersih.</li>
+                            <li><b>Tanda Tangan Tanda Terima:</b> Berikan tanda tangan sebagai bukti penerimaan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-gray-100 font-bold text-lg">
+                        2. Saat Menyalurkan ke Penerima Manfaat
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Tepat Sasaran:</b> Berikan hanya kepada Penerima Manfaat yang terdata.</li>
+                            <li><b>Tepat Waktu:</b> Usahakan disalurkan segera setelah diterima dari SPPG, agar makanan masih segar dan aman.</li>
+                            <li><b>Jaga Kebersihan:</b> Pastikan tangan Ibu Kader bersih saat menyerahkan paket.</li>
+                            <li><b>Jaga Suhu Makanan:</b> Hindari meletakkan paket di bawah sinar matahari langsung atau di tempat yang panas terlalu lama.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-gray-100 font-bold text-lg">
+                        3. Pencatatan & Pelaporan
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                             <li><b>Tanda Terima Konsumsi:</b> Minta Penerima Manfaat (atau orang tua/wali) untuk menandatangani tanda terima sebagai bukti bahwa mereka sudah menerima paket.</li>
+                             <li><b>Laporkan Kendala:</b> Segera laporkan ke SPPG jika ada Penerima Manfaat yang tidak bisa dijangkau, menolak, atau ada keluhan tentang makanan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-gray-100 font-bold text-lg">
+                        4. Higiene Personal Ibu Kader
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Cuci Tangan:</b> Selalu cuci tangan pakai sabun sebelum dan sesudah menyalurkan makanan.</li>
+                            <li><b>Jaga Kebersihan Diri:</b> Pastikan Ibu Kader dalam kondisi sehat saat bertugas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Poin Penting Section -->
+        <section id="poin-penting" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Hal-hal Penting Lainnya</h2>
+             <p class="mb-8 text-gray-600">Beberapa hal tambahan yang perlu menjadi perhatian kita bersama.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-3 flex items-center"><span class="text-2xl mr-3">💬</span> Komunikasi Aktif</h3>
+                    <p class="text-gray-600">Jangan ragu untuk berkomunikasi dengan Kepala SPPG atau petugas SPPG jika ada pertanyaan, kendala, atau masukan.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-3 flex items-center"><span class="text-2xl mr-3">🌱</span> Edukasi Singkat</h3>
+                    <p class="text-gray-600">Saat menyerahkan paket, Ibu Kader bisa memberikan pesan singkat tentang pentingnya makan bergizi atau manfaat menu hari itu.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-3 flex items-center"><span class="text-2xl mr-3">🧐</span> Peran Pendampingan</h3>
+                    <p class="text-gray-600">Ibu Kader juga diharapkan dapat memantau apakah paket MBG benar-benar dikonsumsi oleh Penerima Manfaat.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-3 flex items-center"><span class="text-2xl mr-3">🛡️</span> Keamanan</h3>
+                    <p class="text-gray-600">Jika ada hal-hal yang mencurigakan atau masalah keamanan, segera laporkan ke SPPG dan pihak berwenang setempat (Babinsa/Bhabinkamtibmas).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

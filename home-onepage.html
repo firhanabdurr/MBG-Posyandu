@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi MBG untuk Ibu Kader Posyandu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Harmoni Nusantara -->
+    <!-- Application Structure Plan: The SPA is designed with a clear, intuitive sidebar navigation (Beranda, Mengenal MBG, Alur Distribusi, Standar Higiene & Keamanan, Tanya Jawab). This thematic grouping allows Ibu Kader Posyandu to quickly jump to relevant information without navigating through a linear report. The Alur Distribusi section uses an interactive flowchart to visually explain the process, enhancing understanding. Standar Higiene & Keamanan uses collapsible sections to present detailed SOPs and CCPs in an organized, digestible manner. This structure prioritizes ease of access, practical application, and visual learning for the target audience. -->
+    <!-- Visualization & Content Choices: Beranda (Visi & Misi, 5 PAS): Goal: Inform & inspire. Presentation: Concise text blocks with icons/emojis. Justification: Quick overview, easy to grasp core values. Method: HTML/CSS. Alur Distribusi (Flowchart): Goal: Explain process. Presentation: Simplified HTML/CSS flowchart. Interaction: Clickable steps reveal detailed responsibilities for cadres. Justification: Visual representation is more effective for process understanding than plain text. Method: HTML/CSS/JS. Standar Higiene & Keamanan (SOPs & CCPs): Goal: Educate on critical practices. Presentation: Collapsible sections for different categories (Personal Hygiene, Penanganan Makanan, Sanitasi Alat). Interaction: Click to expand/collapse details. Justification: Organizes detailed information, allowing users to focus on relevant sections. Method: HTML/CSS/JS. Tanya Jawab (FAQs): Goal: Address common questions. Presentation: Accordion list. Interaction: Click to show/hide answers. Justification: Efficiently presents Q&A format. Method: HTML/CSS/JS. Anggaran (Budget Allocation): Goal: Inform about resource breakdown. Presentation: Doughnut chart (Chart.js). Justification: Visually represents proportions clearly and quickly. Method: Chart.js (Canvas). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #1A1A1A;
+        }
+        .sidebar-item {
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-item.active {
+            background-color: #D9A443;
+            color: #0A2463;
+            font-weight: 600;
+        }
+        .sidebar-item:hover {
+            background-color: #E6C585;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .flowchart-step {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .flowchart-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .accordion-header:hover {
+            background-color: #E6C585;
+        }
+        .accordion-content {
+            display: none;
+        }
+        .accordion-content.active {
+            display: block;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+    <aside class="w-64 bg-[#0A2463] text-white p-6 flex-shrink-0 overflow-y-auto">
+        <h1 class="text-2xl font-bold mb-8 text-[#D9A443]">Dasbor MBG</h1>
+        <nav>
+            <ul>
+                <li><a href="#beranda" class="sidebar-item active block py-3 px-4 rounded-lg mb-2">🏠 Beranda</a></li>
+                <li><a href="#mengenal-mbg" class="sidebar-item block py-3 px-4 rounded-lg mb-2">💡 Mengenal MBG</a></li>
+                <li><a href="#alur-distribusi" class="sidebar-item block py-3 px-4 rounded-lg mb-2">🚚 Alur Distribusi</a></li>
+                <li><a href="#standar-higienis" class="sidebar-item block py-3 px-4 rounded-lg mb-2">🧼 Standar Higiene & Keamanan</a></li>
+                <li><a href="#tanya-jawab" class="sidebar-item block py-3 px-4 rounded-lg mb-2">❓ Tanya Jawab</a></li>
+            </ul>
+        </nav>
+        <div class="mt-auto pt-8">
+            <p class="text-xs text-gray-400">Dibuat oleh SPPG untuk Ibu Kader Posyandu.</p>
+        </div>
+    </aside>
+
+    <main id="main-content" class="flex-1 p-8 overflow-y-auto">
+        <!-- Beranda Section -->
+        <section id="beranda" class="content-section active">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Selamat Datang, Ibu-ibu Kader Posyandu Hebat!</h2>
+            <p class="mb-8 text-gray-600">Terima kasih atas dedikasi Ibu-ibu dalam menjaga kesehatan masyarakat. Dasbor ini dirancang khusus untuk membantu Ibu-ibu memahami dan menjalankan Program Makan Bergizi Gratis (MBG) dengan lebih mudah, efektif, dan aman.</p>
+            
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                 <h3 class="text-2xl font-bold text-[#0A2463] mb-4">Visi & Misi Badan Gizi Nasional (BGN)</h3>
+                 <p class="italic text-center text-lg text-gray-700 mb-2">"Terwujudnya modal manusia berkualitas untuk Indonesia maju menuju Indonesia Emas 2045."</p>
+                 <p class="text-gray-600">Visi ini dicapai melalui 5 Misi utama: meningkatkan akses & kualitas gizi, mengoptimalkan edukasi, memperkuat tata kelola, membangun kemitraan strategis, serta mengawasi dan mengevaluasi program secara berkelanjutan.</p>
+            </div>
+
+            <h3 class="text-2xl font-bold text-[#0A2463] mb-4">5 Prinsip Dasar (5PAS) Program MBG</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                    <p class="text-4xl mb-2">🛡️</p>
+                    <h4 class="font-bold text-[#0A2463]">Pasti Aman</h4>
+                    <p class="text-sm text-gray-500">Keamanan pangan adalah prioritas utama.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                    <p class="text-4xl mb-2">⭐</p>
+                    <h4 class="font-bold text-[#0A2463]">Pasti Terjamin</h4>
+                    <p class="text-sm text-gray-500">Kualitas gizi dan rasa harus sesuai standar.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                    <p class="text-4xl mb-2">✅</p>
+                    <h4 class="font-bold text-[#0A2463]">Pasti Kredibel</h4>
+                    <p class="text-sm text-gray-500">Akuntabilitas dalam setiap proses.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                    <p class="text-4xl mb-2">🔄</p>
+                    <h4 class="font-bold text-[#0A2463]">Pasti Terjaga</h4>
+                    <p class="text-sm text-gray-500">Kontinuitas program harus dipastikan.</p>
+                </div>
+                 <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                    <p class="text-4xl mb-2">🔍</p>
+                    <h4 class="font-bold text-[#0A2463]">Pasti Terbuka</h4>
+                    <p class="text-sm text-gray-500">Transparansi dalam pengelolaan dan pelaporan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mengenal MBG Section -->
+        <section id="mengenal-mbg" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Mengenal Lebih Dekat Program MBG</h2>
+            <p class="mb-8 text-gray-600">Program MBG adalah upaya pemerintah untuk meningkatkan gizi masyarakat. Mari kita pahami siapa saja sasarannya dan bagaimana bentuk bantuannya.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Siapa Saja Penerima Manfaat MBG?</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>**Peserta Didik:** Siswa PAUD/TK/RA, SD/MI, SMP/MTs, SMA/MA/SMK, SLB, Pesantren, Sekolah Keagamaan, dan Pendidikan Layanan Khusus.</li>
+                        <li>**Ibu Hamil:** Semua trimester kehamilan.</li>
+                        <li>**Ibu Menyusui:** Dengan anak usia 0-24 bulan.</li>
+                        <li>**Anak Balita:** Usia 1-5 tahun (non-PAUD/TK).</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-600">Penerima manfaat harus terdata dan berada dalam radius maksimal 6 km atau 20 menit waktu tempuh dari SPPG.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Bentuk Bantuan & Komposisi Gizi</h3>
+                    <p class="text-gray-700 mb-4">Bantuan MBG berupa **paket makanan lengkap** yang diolah dan disajikan oleh SPPG. Setiap paket dirancang untuk memenuhi:</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>**Menu Lengkap:** Makanan pokok, lauk pauk, sayuran, buah, dan susu.</li>
+                        <li>**Gizi Seimbang:** Mengacu pada Angka Kecukupan Gizi (AKG) Harian.</li>
+                        <li>**Porsi Tepat:** Disesuaikan dengan kelompok usia sasaran.</li>
+                        <li>**Aman & Higienis:** Terjamin mutu dan keamanannya (mengikuti 5 Kunci Keamanan Pangan WHO).</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-600">Setiap paket diberikan sebagai makan siang (kontribusi 30-35% AKG) atau makan pagi (20-25% AKG).</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Komposisi Anggaran Rata-rata per Porsi (Rp 15.000)</h3>
+                <p class="text-gray-600 mb-4">Ibu-ibu perlu tahu bahwa setiap porsi MBG memiliki alokasi biaya yang terperinci untuk memastikan kualitas terbaik:</p>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="budgetChartMengenal"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alur Distribusi Section -->
+        <section id="alur-distribusi" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Alur Distribusi Paket MBG: Peran Ibu Kader</h2>
+            <p class="mb-8 text-gray-600">Ibu-ibu Kader adalah bagian tak terpisahkan dari alur distribusi ini. Mari kita pahami setiap langkahnya dan apa peran penting Ibu-ibu di dalamnya. Klik setiap kotak untuk melihat detailnya!</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="dapur">
+                    <p class="text-4xl mb-2">🍳</p>
+                    <h3 class="font-bold text-[#0A2463]">1. Dapur SPPG Menyiapkan</h3>
+                    <p class="text-sm text-gray-600">Makanan diolah & dikemas.</p>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="pengiriman">
+                    <p class="text-4xl mb-2">🚚</p>
+                    <h3 class="font-bold text-[#0A2463]">2. Pengiriman ke Titik Kader</h3>
+                    <p class="text-sm text-gray-600">Mobil SPPG antar ke Posyandu/titik kumpul.</p>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="penerimaan_kader">
+                    <p class="text-4xl mb-2">📦</p>
+                    <h3 class="font-bold text-[#0A2463]">3. Ibu Kader Menerima</h3>
+                    <p class="text-sm text-gray-600">Cek jumlah & kondisi paket.</p>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="penyaluran_kader">
+                    <p class="text-4xl mb-2">🤲</p>
+                    <h3 class="font-bold text-[#0A2463]">4. Ibu Kader Menyalurkan</h3>
+                    <p class="text-sm text-gray-600">Antar langsung ke rumah Penerima Manfaat.</p>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="konsumsi">
+                    <p class="text-4xl mb-2">😋</p>
+                    <h3 class="font-bold text-[#0A2463]">5. Penerima Manfaat Mengonsumsi</h3>
+                    <p class="text-sm text-gray-600">Pastikan makanan disantap.</p>
+                </div>
+                <div class="flowchart-step bg-white p-6 rounded-xl shadow-md text-center" data-step="pelaporan_kader">
+                    <p class="text-4xl mb-2">📝</p>
+                    <h3 class="font-bold text-[#0A2463]">6. Ibu Kader Melapor</h3>
+                    <p class="text-sm text-gray-600">Serahkan tanda terima ke SPPG.</p>
+                </div>
+            </div>
+
+            <div id="flow-detail-content" class="mt-8 bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Detail Tahapan: Dapur SPPG Menyiapkan</h3>
+                <p class="text-gray-600">Tim SPPG bekerja sejak dini hari untuk menyiapkan makanan. Mereka memastikan bahan baku segar, diolah dengan higienis, dimasak dengan suhu yang tepat (misal: ayam 74°C, telur matang sempurna), dan dikemas dalam foodtray yang bersih dan tertutup rapat. Setiap hari, sampel makanan disimpan sebagai cadangan jika ada investigasi.</p>
+            </div>
+        </section>
+
+        <!-- Standar Higiene & Keamanan Section -->
+        <section id="standar-higienis" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Standar Higiene & Keamanan Pangan: Kunci Kesuksesan Kita</h2>
+            <p class="mb-8 text-gray-600">Keamanan pangan adalah prioritas utama Program MBG. Ibu-ibu Kader juga berperan dalam menjaga standar ini, terutama saat penanganan paket. Mari kita pahami standar penting yang harus kita patuhi.</p>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#5A7D7C] text-white font-bold text-lg">
+                        Higiene Personal Relawan & Penjamah Makanan
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>**Pemeriksaan Kesehatan Rutin:** Semua penjamah makanan (termasuk relawan) wajib sehat. Pemeriksaan penyakit menular minimal **setahun sekali**, dan *stool test* minimal **enam bulan sekali**. Relawan yang sakit tidak boleh menangani makanan.</li>
+                            <li>**Cuci Tangan 6 Langkah:** Wajib cuci tangan pakai sabun selama 60 detik sebelum dan sesudah menangani makanan, setelah dari kamar kecil, atau setelah batuk/bersin.</li>
+                            <li>**Penggunaan APD:** Wajib menggunakan seragam bersih, penutup kepala, masker, dan sarung tangan (saat pemorsian/penanganan makanan siap saji).</li>
+                            <li>**Kuku Pendek & Bersih:** Tidak menggunakan perhiasan di tangan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#5A7D7C] text-white font-bold text-lg">
+                        Penanganan Bahan Makanan (Pencegahan KLB)
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>**Suhu Penerimaan Ayam/Daging Beku:** Maksimal **-18°C**. Tolak jika suhu tidak sesuai atau kemasan rusak.</li>
+                            <li>**Penyimpanan:** Bahan beku di *freezer* (≤ -18°C), bahan dingin di *chiller* (0-5°C). Jangan mencampur bahan mentah dan matang.</li>
+                            <li>**Thawing (Pelunakan):** Lakukan di *chiller* atau rendam dalam air dingin mengalir (ganti air setiap 30 menit). **TIDAK BOLEH** *thawing* di suhu ruang terbuka.</li>
+                            <li>**Pemasakan:** Suhu internal ayam minimal **74°C**. Telur dan tahu harus matang sempurna (telur min. 71°C, tahu min. 85°C).</li>
+                            <li>**Waktu Masak:** Atur waktu masak sedekat mungkin dengan jam pemorsian/konsumsi. Makanan tidak boleh dimasak terlalu jauh dari waktu konsumsi tanpa penjagaan suhu yang tepat.</li>
+                            <li>**Ikan Histamin:** Ikan seperti tongkol, tuna, cakalang harus ditangani khusus (bersihkan insang & isi perut, simpan dingin cepat). Tolak ikan yang berbau tajam/rusak.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#5A7D7C] text-white font-bold text-lg">
+                        Sanitasi Alat Makan & Fasilitas Dapur
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>**Pencucian Ompreng (Foodtray):**
+                                <ol class="list-decimal list-inside ml-4">
+                                    <li>**Scrapping:** Buang sisa makanan padat.</li>
+                                    <li>Bilas dengan air.</li>
+                                    <li>Gosok dengan sabun.</li>
+                                    <li>Bilas dengan air bersih.</li>
+                                    <li>**Sanitasi Air Panas:** Bilas dengan air panas minimal **82°C** selama 10 detik untuk membunuh bakteri.</li>
+                                    <li>Keringkan di rak pengering atau dengan lap bersih yang rutin diganti.</li>
+                                </ol>
+                            </li>
+                            <li>**Kebersihan Dapur:** Lantai, dinding, meja kerja harus selalu bersih dan kering. Lakukan pengendalian hama (pest control) rutin.</li>
+                            <li>**Mobil Distribusi:** Wajib dibersihkan setiap hari sebelum dan sesudah pengantaran.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tanya Jawab Section -->
+        <section id="tanya-jawab" class="content-section">
+            <h2 class="text-3xl font-bold text-[#0A2463] mb-6">Tanya Jawab Seputar Program MBG</h2>
+            <p class="mb-8 text-gray-600">Berikut adalah beberapa pertanyaan umum yang sering muncul. Klik pertanyaan untuk melihat jawabannya.</p>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#E6C585] text-[#0A2463] font-bold">
+                        Apakah guru bisa mendapatkan jatah MBG?
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        Tidak, Program MBG memiliki sasaran yang sangat spesifik (siswa, ibu hamil, ibu menyusui, balita). Alokasi anggaran dan porsi sudah disesuaikan dengan data sasaran tersebut, sehingga tidak ada kelebihan porsi untuk pihak di luar sasaran. Ini untuk menjaga prinsip "Tepat Sasaran" dan akuntabilitas program.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#E6C585] text-[#0A2463] font-bold">
+                        Bagaimana jika penerima manfaat ada di kabupaten lain, tapi jaraknya dekat?
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        Meskipun jaraknya dekat (misal 3 km), SPPG tidak bisa melayani penerima manfaat di kabupaten lain. Program MBG diatur per wilayah administratif (kabupaten/kota), dan SPPG dialokasikan untuk melayani di kabupaten/kota tempat SPPG itu didirikan. Hal ini terkait pelaporan data, koordinasi antar-pemerintah daerah, dan audit keuangan.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#E6C585] text-[#0A2463] font-bold">
+                        Apakah pesantren tanpa pendidikan formal bisa jadi sasaran?
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        Ya, bisa. Juknis Program MBG secara eksplisit menyebutkan "santri" sebagai penerima manfaat, terlepas dari apakah pesantren tersebut juga menyelenggarakan pendidikan formal atau tidak. Yang penting adalah mereka sedang menempuh jenjang pendidikan di pesantren.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#E6C585] text-[#0A2463] font-bold">
+                        Bagaimana jika hasil *stool test* relawan positif infeksi?
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        Jika hasil *stool test* relawan menunjukkan adanya infeksi, relawan tersebut **mutlak tidak boleh terlibat dalam penanganan makanan** atau berada di area dapur SPPG. Ia harus segera ditarik dari area kerja, mendapatkan penanganan medis, dan tidak diizinkan kembali bekerja sebelum ada surat keterangan sehat dari dokter yang menyatakan bebas infeksi.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="accordion-header p-5 bg-[#E6C585] text-[#0A2463] font-bold">
+                        Bagaimana jika relawan sudah cuci tangan lalu menyentuh wastafel kotor?
+                        <span class="float-right text-xl">▼</span>
+                    </div>
+                    <div class="accordion-content p-5 text-gray-700">
+                        Jika relawan sudah selesai mencuci tangan dengan bersih, lalu tidak sengaja menyentuh permukaan wastafel yang kotor, maka ia **harus segera mengulangi seluruh proses cuci tangan dengan benar dari awal**. Ini untuk mencegah kontaminasi ulang dan penyebaran bakteri.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const contentSections = document.querySelectorAll('.content-section');
+            const mainContent = document.getElementById('main-content');
+            
+            const navigate = (targetId) => {
+                sidebarItems.forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('href').substring(1) === targetId);
+                });
+                contentSections.forEach(section => {
+                    section.classList.toggle('active', section.id === targetId);
+                });
+                mainContent.scrollTop = 0;
+            };
+            
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigate(item.getAttribute('href').substring(1));
+                });
+            });
+
+            navigate('beranda');
+
+            // Alur Distribusi Flowchart Interaction
+            const flowDetails = {
+                dapur: 'Tim SPPG bekerja sejak dini hari untuk menyiapkan makanan. Mereka memastikan bahan baku segar, diolah dengan higienis, dimasak dengan suhu yang tepat (misal: ayam 74°C, telur matang sempurna), dan dikemas dalam foodtray yang bersih dan tertutup rapat. Setiap hari, sampel makanan disimpan sebagai cadangan jika ada investigasi.',
+                pengiriman: 'Mobil distribusi SPPG mengantar paket MBG ke titik kumpul yang disepakati (misal: Posyandu, rumah kader). Petugas distribusi SPPG akan menyerahkan paket kepada Ibu Kader. Waktu tempuh maksimal 20 menit.',
+                penerimaan_kader: 'Ibu Kader menerima dan memeriksa jumlah serta kondisi paket (pastikan foodtray tertutup rapat, tidak rusak, dan bersih). Berikan tanda tangan sebagai bukti penerimaan.',
+                penyaluran_kader: 'Ibu Kader menyalurkan paket MBG langsung ke rumah Penerima Manfaat (Ibu Hamil, Ibu Menyusui, Anak Balita) setiap hari Senin-Jumat. Pastikan tangan bersih saat menyerahkan paket.',
+                konsumsi: 'Penerima Manfaat mengonsumsi makanan. Ibu Kader diharapkan dapat memantau apakah paket MBG benar-benar disantap oleh Penerima Manfaat.',
+                pelaporan_kader: 'Ibu Kader membuat dan menyerahkan tanda terima pemberian MBG dari setiap Penerima Manfaat kepada SPPG. Laporkan kendala atau permasalahan di lapangan secara segera.'
+            };
+
+            const flowchartSteps = document.querySelectorAll('.flowchart-step');
+            const flowDetailContent = document.getElementById('flow-detail-content');
+
+            flowchartSteps.forEach(step => {
+                step.addEventListener('click', () => {
+                    const stepKey = step.dataset.step;
+                    flowchartSteps.forEach(s => s.classList.remove('bg-[#D9A443]', 'text-white'));
+                    step.classList.add('bg-[#D9A443]', 'text-white');
+                    flowDetailContent.innerHTML = `
+                        <h3 class="text-xl font-semibold text-[#0A2463] mb-4">Detail Tahapan: ${step.querySelector('h3').textContent}</h3>
+                        <p class="text-gray-600">${flowDetails[stepKey]}</p>
+                    `;
+                });
+            });
+
+            // Set initial detail for flowchart
+            if (flowchartSteps.length > 0) {
+                flowchartSteps[0].click();
+            }
+
+            // Accordion for Standar Higiene & Keamanan and Tanya Jawab
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    header.querySelector('span').textContent = content.classList.contains('active') ? '▼' : '▲';
+                    content.classList.toggle('active');
+                });
+            });
+
+            // Budget Chart for Mengenal MBG section
+            const budgetCtxMengenal = document.getElementById('budgetChartMengenal').getContext('2d');
+            const budgetChartMengenal = new Chart(budgetCtxMengenal, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Bahan Pangan (Rp 8.000 - Rp 10.000)', 'Operasional (Rp 2.000 - Rp 3.000)', 'Sewa (Rp 1.500 - Rp 2.000)'],
+                    datasets: [{
+                        data: [9000, 2500, 1750], 
+                        backgroundColor: ['#0A2463', '#5A7D7C', '#D9A443'],
+                        borderColor: '#F8F7F4',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.parsed);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
